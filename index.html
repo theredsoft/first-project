@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>Mojoform | Запись на вебинар</title>
+	<link href="../css/style.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="../img/favicon.png" type="image/png">
+</head>
+<body class="body-video">
+
+<main id="index">
+	//= ../block/video-sign/index.html
+</main>
+
+<script src="../js/script.min.js"></script>
+<script>
+	$("#webinar-subscribe").click(function(e) {
+		e.preventDefault();
+
+		var name = $("#webinar-name").val();
+		var email = $("#webinar-email").val();
+		var phone = $("#webinar-phone").val();
+
+		submitGetResponse({
+			"name": name,
+			"email": email,
+			"dayOfCycle": 0,
+			"campaign": {
+				"campaignId": "4AAS4"
+			},
+				customFieldValues: [
+					{
+						customFieldId: "0BoF1",
+						value: [
+							phone
+						]
+					}
+				],
+		}).done(function() {
+			alert("Вы успешно зарегистрированы!");
+		}).fail(function() {
+			alert("Во время регистрации возникла ошибка. Попробуйте позже.");
+		});
+	})
+</script>
+</body>
+</html>
